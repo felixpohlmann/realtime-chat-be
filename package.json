@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for a (M)ERN-based realtime chat application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixpohlmann/realtime-chat-be.git"
+  },
+  "author": "Felix Pohlmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixpohlmann/realtime-chat-be/issues"
+  },
+  "homepage": "https://github.com/felixpohlmann/realtime-chat-be#readme"
+}
