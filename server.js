@@ -1,3 +1,4 @@
-const dbController = require("./controllers/db.controller");
+const express = require("express");
 
-dbController.connect();
+
+const messageController = require("./controllers/message.controller");
