@@ -1,15 +1,15 @@
 const dbService = require("../services/db.service");
 
-async function storeMessage(content) {
+async function storeMessage(req, res) {
   const result = await dbService.query(
-    `INSERT INTO messages (content) VALUES ('${content}')`
+    `INSERT INTO messages (content) VALUES ('${req.body.content}')`
   );
-  console.log(result);
+  res.json(result);
 }
 
-async function getMessages() {
+async function getMessages(req, res) {
   const result = await dbService.query(`SELECT * FROM messages`);
-  return result.rows;
+  res.json(result.rows);
 }
 
 module.exports = { storeMessage, getMessages };
