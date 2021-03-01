@@ -27,6 +27,8 @@ io.on("connection", (socket) => {
   console.log("Client connected!");
 });
 
+app.io = io;
+
 //TEMPORARY
 app.get("/testemit", (req, res) => {
   io.sockets.emit("testemit", "testdata");

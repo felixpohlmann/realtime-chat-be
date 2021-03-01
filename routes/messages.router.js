@@ -10,6 +10,7 @@ Router.get("/", (req, res) => {
 
 Router.post("/", (req, res) => {
   messagesController.storeMessage(req, res);
+  req.app.io.sockets.emit("newMessage", "new message emit");
 });
 
 module.exports = Router;
