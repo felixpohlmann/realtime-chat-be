@@ -15,10 +15,15 @@ app.use(express.json());
 
 //socket (need http server to be created)
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 io.on("connection", (socket) => {
-  console.log("new client connected");
+  console.log("Client connected!");
   /*
   if (interval) {
     clearInterval(interval);
@@ -39,13 +44,14 @@ const testEmit = (socket) => {
 
 //routes
 
-app.use("/messages", messagesRouter);
-
 app.get("/", (req, res) => {
-  res.send("Realtime-Chat API v1.0");
+  res.send("HALLO");
 });
 
-app.listen(PORT, (err) => {
+app.use("/messages", messagesRouter);
+
+//http server listening, not express app(!)
+server.listen(PORT, (err) => {
   if (err) throw err;
   console.log(`Server now listening in port ${PORT}`);
 });
