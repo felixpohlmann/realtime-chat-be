@@ -27,13 +27,8 @@ io.on("connection", (socket) => {
   console.log("Client connected!");
 });
 
+//make socket globally available 
 app.io = io;
-
-//TEMPORARY
-app.get("/testemit", (req, res) => {
-  io.sockets.emit("testemit", "testdata");
-  res.end();
-});
 
 const testEmit = (socket) => {
   const response = new Date();
