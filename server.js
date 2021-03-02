@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-//socket (need http server to be created)
+//socket (needs http server to be created)
 const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
@@ -24,19 +24,13 @@ const io = socketIO(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("Client connected!");
+  console.log("New client connected!");
 });
 
-//make socket globally available 
+//make socket globally available
 app.io = io;
 
-const testEmit = (socket) => {
-  const response = new Date();
-  socket.emit("testemit", response);
-};
-
 //routes
-
 app.get("/", (req, res) => {
   res.send("HALLO");
 });
