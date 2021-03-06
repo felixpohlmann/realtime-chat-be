@@ -1,5 +1,11 @@
 const { Pool } = require("pg");
-const pool = new Pool({ database: "realtime_chat" });
+const dbConfig = require("../config/db.config");
+const pool = new Pool({
+  connectionString: dbConfig.dbUri,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 module.exports = {
   query: (text, params, callback) => {
@@ -7,4 +13,3 @@ module.exports = {
     return pool.query(text, params, callback);
   },
 };
-
