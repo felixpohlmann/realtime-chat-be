@@ -17,7 +17,10 @@ app.use(express.json());
 //socket (needs http server to be created)
 const server = http.createServer(app);
 const io = socketIO(server, {
-  cors: true,
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {
